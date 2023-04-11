@@ -1,28 +1,3 @@
-// import { StyleSheet, Text, View } from 'react-native'
-// import React from 'react'
-// import { NavigationContainer } from '@react-navigation/native'
-// import { createNativeStackNavigator } from '@react-navigation/native-stack'
-// import ProfileScreen from "../components/ProfileScreen"
-// import EditProfile from '../components/EditProfile'
-
-
-// const Profile = () => {
-//   const Stack = createNativeStackNavigator()
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen name='ProfileScreen' component={ProfileScreen} />
-//         <Stack.Screen name='EditProfile' component={EditProfile} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-
-//   )
-// }
-
-// export default Profile
-
-// const styles = StyleSheet.create({})
-
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
 import { AntDesign } from '@expo/vector-icons';
@@ -40,18 +15,12 @@ const Profile = ({ navigation }) => {
       <View style={styles.container}>
         <View style={{ flexDirection: "row" }}>
           <View style={{ flexDirection: "row", alignItems: "center", flex: 1 }}>
-            <TouchableOpacity style={{ flex: 1, flexDirection: "row" }}>
-              <Text style={{ fontWeight: "bold", fontSize: 18, }}>mr_peabody</Text>
-              <View>
-                <AntDesign name="down" size={20} color="grey" />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Feather name="plus-square" size={22} color="black" />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Entypo name="menu" size={26} color="black" />
-            </TouchableOpacity>
+            <Text style={{ fontWeight: "bold", fontSize: 18, }}>mr_peabody</Text>
+            <View style={{ flex: 1 }}>
+              <AntDesign name="down" size={15} color="grey" />
+            </View>
+            <Feather name="plus-square" size={22} color="black" />
+            <Entypo name="menu" size={26} color="black" />
           </View>
         </View>
         <View style={{ justifyContent: "space-around", flexDirection: "row", alignItems: "center" }}>
@@ -72,7 +41,7 @@ const Profile = ({ navigation }) => {
             <Text>Following</Text>
           </View>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate("EditProfile")} style={styles.Eprofile} >
+        <TouchableOpacity onPress={() => navigation.navigate('EditProfile')} style={styles.Eprofile} >
           <Text style={{ fontWeight: "500" }}>Edit Profile</Text>
         </TouchableOpacity>
         <View>

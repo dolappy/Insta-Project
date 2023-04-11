@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  FlatList,
 } from "react-native";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
@@ -29,18 +30,28 @@ const Home = () => {
     return null;
   }
 
+  const Testing = () => {
+    return (
+      <Text style={{ fontSize: 200, color: "red", fontWeight: "bold" }}>
+        Hello WOrld
+      </Text>
+    );
+  };
+
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <FontAwesome name="plus-square-o" size={24} color="black" />
         <Text style={{ fontFamily: "Lobster", fontSize: 27 }}>Instagram</Text>
         <Feather name="navigation" size={24} color="black" />
       </View>
-      <Stories />
-      <View>
-        {HomeData.map((data, index) => {
+
+      <FlatList
+        ListHeaderComponent={Stories}
+        data={HomeData}
+        renderItem={({ item }) => {
           return (
-            <View key={index} style={{ marginBottom: 10 }}>
+            <View style={{ marginBottom: 10 }}>
               <View
                 style={{
                   flexDirection: "row",
@@ -49,7 +60,7 @@ const Home = () => {
                 }}
               >
                 <Image
-                  source={data.profile}
+                  source={item.profile}
                   style={{
                     height: 40,
                     width: 40,
@@ -65,7 +76,7 @@ const Home = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  {data.name}
+                  {item.name}
                 </Text>
                 <TouchableOpacity>
                   <Entypo name="dots-three-vertical" size={20} color="black" />
@@ -73,7 +84,7 @@ const Home = () => {
               </View>
               {/* POST IMAGE  */}
               <Image
-                source={data.postImage}
+                source={item.postImage}
                 style={{ height: 100 * 4, width: "100%", marginVertical: 10 }}
               />
               {/* POST CONTENT  */}
@@ -107,7 +118,7 @@ const Home = () => {
               </View>
               {/* SECTION FOR LIKE  */}
               <View style={{ marginTop: 10, paddingHorizontal: 13 }}>
-                <Text>Liked by {data.likes} others</Text>
+                <Text>Liked by {item.likes} others</Text>
                 <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                   If enjoy the video ! Please like and Subscribe :)
                 </Text>
@@ -119,18 +130,10 @@ const Home = () => {
               </View>
             </View>
           );
-        })}
-      </View>
-      <TouchableOpacity>
-        <Foundation
-          name="refresh"
-          size={60}
-          color="black"
-          style={{ alignSelf: "center" }}
-        />
-      </TouchableOpacity>
-      <View style={{ marginBottom: 50 }}></View>
-    </ScrollView>
+        }}
+      />
+      <View></View>
+    </View>
   );
 };
 
